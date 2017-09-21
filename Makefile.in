@@ -1,0 +1,52 @@
+# Makefile.in for changepassword.cgi
+
+CC 		= gcc
+CGIDIR 		= @CGIDIR@
+LANGUAGE	= @LANGUAGE@
+SMBPASSWD	= @SMBPASSWD@
+SQUIDPASSWD	= @SQUIDPASSWD@
+LOGO		= @LOGO@
+SRCDIR 		= .
+VPATH 		= .
+INSTALL 	= cp
+LIBCRYPT 	= @CRYPTLIB@
+CFLAGS 		= -O2 -g
+DEFS            = @DEFS@
+
+INSTALL_PROGRAM = $(INSTALL)
+
+SRCS=changepassword.c
+OBJS=changepassword.cgi smbencrypt/SMBPasswdGen.o smbencrypt/md4.o smbencrypt/smbencrypt.o smbencrypt/encrypt.o
+
+DISTFILES = $(SRCS)
+
+all: changepassword.cgi
+
+changepassword.cgi:
+	$(CC) -c -o smbencrypt/SMBPasswdGen.o  smbencrypt/SMBPasswdGen.c
+	$(CC) -c -o smbencrypt/encrypt.o       smbencrypt/encrypt.c
+	$(CC) -c -o smbencrypt/md4.o           smbencrypt/md4.c
+	$(CC) -c -o smbencrypt/smbencrypt.o    smbencrypt/smbencrypt.c
+	$(CC) changepassword.c -o $(OBJS) $(LIBCRYPT) $(DEFS) -D$(LANGUAGE) -DSMBPASSWD=\"$(SMBPASSWD)\" -DSQUIDPASSWD=\"$(SQUIDPASSWD)\" -DLOGO=\"$(LOGO)\" -L./smbencrypt -ldes
+
+install: all
+	$(INSTALL_PROGRAM) changepassword.cgi $(CGIDIR)/changepassword.cgi
+	chmod 4755 $(CGIDIR)/changepassword.cgi
+
+uninstall:
+	rm -f $(CGIDIR)/changepassword.cgi
+
+TAGS: $(SRCS)
+	etags $(SRCS)
+
+clean:
+	rm -f *.cgi *.o core smbencrypt/*.o
+
+mostlyclean: clean
+
+distclean: clean
+	rm -f Makefile config.status config.cache config.log
+
+realclean: distclean
+	rm -f TAGS
+

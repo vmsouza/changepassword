@@ -1,0 +1,96 @@
+dnl Process this file with autoconf to produce a configure script.
+AC_INIT(changepassword.c)
+
+dnl Checks for programs.
+AC_PROG_CC
+
+dnl Checks for libraries.
+dnl Replace `main' with a function in -lcrypt:
+AC_CHECK_LIB(crypt, main)
+
+AC_CHECK_HEADERS(unistd.h sys/types.h stdio.h string.h stdlib.h pwd.h errno.h signal.h shadow.h time.h)
+
+AC_CHECK_LIB(crypt, crypt, [CRYPTLIB="-lcrypt"])
+AC_SUBST(CRYPTLIB)
+
+dnl Select cgidir
+AC_ARG_ENABLE(cgidir,
+[
+   --enable-cgidir=cgidir           Absolute path do cgi-bin dir
+                                    Default: /home/httpd/cgi-bin ],
+[          
+    if test "$enableval"; then
+        CGIDIR=$enableval
+    fi
+],[CGIDIR="/home/httpd/cgi-bin"])
+AC_SUBST(CGIDIR)
+
+dnl Select language
+AC_ARG_ENABLE(language,
+[
+   --enable-language=language       Language to translate (Default: English)
+                                    Look in languages dir ],
+[          
+    if test "$enableval"; then
+        LANGUAGE=$enableval
+    fi
+],[LANGUAGE="English"])
+AC_SUBST(LANGUAGE)
+
+dnl Select smbpasswd
+AC_ARG_ENABLE(smbpasswd,
+[
+   --enable-smbpasswd=smbpasswd     Absolute path to smbpasswd PASSWORD FILE
+                                    Default: /etc/smbpasswd ],
+[          
+    if test "$enableval"; then
+        SMBPASSWD=$enableval
+    fi
+],[SMBPASSWD="/etc/smbpasswd"])
+AC_SUBST(SMBPASSWD)
+
+dnl Select squidpasswd
+AC_ARG_ENABLE(squidpasswd,
+[
+   --enable-squidpasswd=squidpasswd Absolute path to Squid PASSWORD FILE
+                                    Default: /etc/squid/passwd ],
+[          
+    if test "$enableval"; then
+        SQUIDPASSWD=$enableval
+    fi
+],[SQUIDPASSWD="/etc/squid/passwd"])
+AC_SUBST(SQUIDPASSWD)
+
+dnl Select logo
+AC_ARG_ENABLE(logo,
+[
+   --enable-logo=imagefilename      Web Logo Image (Default: Disabled) ],
+[          
+    if test "$enableval"; then
+        LOGO=$enableval
+    fi
+],[LOGO="none"])
+AC_SUBST(LOGO)
+
+echo -en "\n\nchangepassword 0.9 Configuration\n--------------------------------\n\n"
+echo "Samba password file: $SMBPASSWD"
+echo "Squid password file: $SQUIDPASSWD"
+
+if test x"$LOGO" != x"none" ; then
+   echo "Logo image         : $LOGO"
+else
+   echo "Logo image         : none"
+fi
+
+echo "Using Language file: languages/$LANGUAGE.h"
+echo -e "Apache cgi-bin dir : $CGIDIR\n"
+
+AC_OUTPUT(Makefile)
+
+if test x"$LOGO" != x"none"; then
+   echo -en "\n\nDon't forgot to copy $LOGO to your website root htdocs\n\n"
+fi
+
+echo -en "Now, type \"make\" and \"make install\"\n\n"
+
+rm -f -f *.cgi *.o core smbencrypt/*.o

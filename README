@@ -1,0 +1,126 @@
+changepassword 0.9
+
+  ,,,,,,,,,,,,,
+.: Description :.
+  `````````````
+ChangePassword modifies the passwords of passwd, Samba, and Squid through
+the Web. All passwords are syncronized and changed in real time through
+browsers like Mozilla, Netscape, IE, Opera, and others.
+
+  ,,,,,,,,,,,,
+.: Installing :.
+  ````````````
+1) Modify conf.h
+
+IMPORTANT
+---------
+
+If you got messages like:
+
+"Could not create unique filename for the temp file"
+"Could not rename the temporary password file"
+
+Don't use the temporary directories through partitions different than
+root partition.
+
+2) Run ./configure
+
+configure options:
+
+--enable-cgidir=cgidir		   Absolute path do cgi-bin dir
+				   Default: /home/httpd/cgi-bin
+
+--enable-language=language	   Language to translate
+				   Default: English
+				   Look in languages dir
+[
+--enable-smbpasswd=smbpasswd	   Absolute path to smbpasswd PASSWORD FILE
+				   Default: /etc/smbpasswd
+
+--disable-smbpasswd		   Don't update Samba passwords
+]
+
+[
+--enable-squidpasswd=squidpasswd   Absolute path to Squid PASSWORD FILE
+                                   Default: /etc/squid/passwd ],
+
+--disable-squidpasswd		   Don't update Squit passwords
+]
+
+--enable-logo=imagefilename        Web Logo Image
+                                   Default: Disabled
+
+Examples:
+
+./configure --enable-cgidir=/var/www/cgi-bin --enable-language=Portuguese
+--enable-smbpasswd=/usr/local/samba/private/smbpasswd
+--enable-squidpasswd=/etc/squid/passwd --enable-logo=opentech.jpg
+
+./configure --enable-cgidir=/var/www/cgi-bin --enable-language=Portuguese
+--disable-smbpasswd --enable-squidpasswd=/etc/squid/passwd
+--enable-logo=opentech.jpg
+
+
+3) type "make"
+4) type "make install"
+5) copy your logo image filename (if set by --enable-logo option) to your
+   website root htdocs
+
+  ,,,,,,,,,,,,,
+.: Translating :.
+  `````````````
+1) Copy English.h to Your_language.h
+2) Translate
+3) Send me Your_Language.h
+
+  ,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+.: Credits and Special thanks :.
+  ````````````````````````````
+
+Parts of the program are taken from:
+	Gerald Carter <jerry@samba.org>			smbencrypt package
+	Knut Grahlmann <Knut.Grahlmann@bigfoot.com>	frgpasswd.c
+	Pedro L. Orso <orso@onda.com.br>		chetcpasswd.c
+	Peter Orbaek <poe@daimi.aau.dk>			passwd.c
+	Salvatore Valente <svalente@mit.edu>		setpwnam.c
+
+Languages:
+	Anders Riis Espersen <aresp@agurk.dk>		Danish
+	Daniel Ruus <daniel@ruus.freeserve.co.uk>	Swedish
+	Emanuel Quass <emanuel.quass@temic.com>		German
+	Fernando Rodriguez <frodmda@hotmail.com>	Spanish
+	Florin Grosu <florin.grosu@igeoss.com>		Romanian
+	François Goudal <goudalf@free.fr>		Francais
+	Jan Slesinger <honza@beyondd.com>		Czech
+	Jaroslaw Danielski <jd@telvinet.pl>		Polish
+	Joseph van Alphen <joseph@vddonk.nl>		Holland
+	Liaobin <liao_bin@371.net>			Chinese
+	Massimiliano Adamo <maxadamo@iol.it>		Italian
+	P. Toth Zsigmond <zsigmond@lanten.hu>		Hungarian
+	Peter de Vries <peter@pdv.xs4all.nl>		Dutch
+	Rok Potocnik <rok@s-je.sik.si>			Slovenian
+	Turnhauser Laszlo <tusi@opticom.hu>		Hungarian
+
+Suggestions, Corrections and/or Fixes:
+	Benjamin Lee <benjamin.lee@realthought.net>
+	Dirk Schwier <info@raumhochdrei.de>
+	Jeff Nelson <jtnelson@emirates.net.ae>
+	Scott Cottrell <scottrell@customresearch.com>
+	Victor Hugo dos Santos <victorhugops@wordcom.cl>
+
+  ,,,,,,,,,,,,,,,
+.: Changes/Fixes :.
+  ```````````````
+Please take a look at the "ChangeLog" to check the latest
+fixes/new features.
+
+  ,,,,,,,,,
+.: Contact :.
+  `````````
+
+You can reach me at: <vinicius@opentech.inf.br>
+
+You can get the lastest version of changepassword at:
+	    http://changepassword.sourceforge.net
+
+Vinicius

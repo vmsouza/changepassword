@@ -1,0 +1,48 @@
+changepassword BUGS FILE
+------------------------
+
+Version 0.8
+---------------------------
+- Local Exploit Bug
+
+Version 0.7
+---------------------------
+- Set LTC in smbpasswd file. The correct is LCT.
+  Bug discovered by Dirk Schwier
+  Patch sent by Dirk Schwier
+
+Version 0.6-1
+---------------------------
+No bugs found.
+
+Version 0.6
+---------------------------
+Find attached a patch against 0.6 to fix the uninitialised tm variable
+which causes (at least on a RedHat 8.x box) the new password to be already
+expired, thus the user cannot log in. *** Bug discovered by Benjamin Lee
+
+Version 0.5
+---------------------------
+No bugs found.
+
+Version 0.4
+---------------------------
+No bugs found.
+
+Version 0.3
+---------------------------
+- Characters like \ / * @ # $ % á ü SPACE and others are
+  convert to %hex format. Example: Password like =123 is
+  tranlated to %3D123
+  Note than = character is replace by %3D . This causes
+  username fail and old/new password check fail.
+  Bug discovered by Anonymous user on 14/jun/2002 and it's
+  present in versions 0.1, 0.2 and 0.3
+
+Version 0.2
+---------------------------
+- Set incorrect group to /etc/shadow (group: man)
+
+Version 0.1 
+---------------------------
+- Samba password don't been updated

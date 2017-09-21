@@ -1,0 +1,184 @@
+changepassword CHANGELOG
+
+0.9 2005-01-08
+--------------
+changepassword.c
+	- Removed system call for nis updates (local exploit compromise)
+
+0.8 2004-09-01
+--------------
+languages/TChinese.h:
+	- Added Traditional Chinese language (Thanks to Juan Lai)
+
+lang.h:
+	- Added Traditional Chinese language
+
+0.8 2004-06-04
+--------------
+changepassword.c:
+	- Changed the LTC to LCT before writing smbpasswd file (Thanks to Dirk Schwier)
+
+languages/Hungarian.h:
+	- Added Hungarian language (Thanks to Turnhauser Laszlo and P. Toth Zsigmond)
+
+languages/Romanian.h
+	- Added Romain language (Thanks to Florin Grosu)
+
+lang.h:
+	- Added Hungarian language
+	- Added Romanian language
+	
+0.8 2003-12-17
+--------------
+languages/Swedish.h:
+	- Added Swedish language (Thanks Daniel Ruus)
+lang.h:
+	- Added Swedish language
+
+0.7 2003-07-03
+--------------
+conf.h:
+	- Added temporary directory reference in config file
+README.brazilian:
+	- Translation of README to brazilian portuguese
+
+0.6-1 2003-04-30
+----------------
+changepassword.c:
+	- Correction about a little bug that causes Red Hat users
+	  can not login after change their passwords
+
+0.6 2003-04-24
+--------------
+changepassword.c:
+	- Added support to MD5 Hash (Thanks Scott Cottrell)
+
+0.5 2002-09-09
+--------------
+languages/Francais.h:
+	- added French language (Thanks François Goudal)
+lang.h:
+	- added French language
+
+0.5 2002-09-03
+--------------
+languages/Czech.h:
+	- added Czech language (Thanks Jan Slesinger)
+lang.h:
+	- added Czech language
+
+0.5 2002-08-29
+--------------
+changepassword.c:
+	- added options in conf.h for set up min and max days between change
+	passwords
+	- added the date of last change in /etc/shadow (Thanks Victor Hugo)
+
+languages/Italian.h:
+	- added italian language (Thanks Massimiliano Adamo)
+lang.h:
+	- added italian language
+
+
+0.5 2002-07-04
+--------------
+changepassword.c:
+	- change squid password file permission to 0644
+languages/Spanish.h:
+	- added spanish language (Thanks Fernando Rodriguez)
+languages/Italian.h:
+	- added italian language (Thanks Massimiliano Adamo)
+lang.h:
+	- added spanish language
+	- added italian language
+
+0.5 2002-06-19
+--------------
+languages/Polish.h:
+	- added polish language (Thanks Jaroslaw Danielski)
+lang.h:
+	- added polish language
+
+0.4 2002-06-17
+--------------
+languages/*.h:
+	- updated all languages (See README for thanks)
+languages/Dutch.h:
+	- added Dutch Language (Thanks Peter de Vries)
+
+0.4 2002-06-14
+--------------
+changepassword.c:
+	- correct check pass fail messages when using characters
+	  like @#$!/\ (see bugs file for informations). added functions
+	  htoi and fixpwd
+	- code clean
+
+0.4 2002-06-12
+-------------- 
+languages/Danish.h:
+	- added Danish Language (Thanks Anders Riis Espersen)
+lang.h:
+	- added Danish Language
+
+0.4 2002-06-11
+--------------
+changepassword.c:
+	- Added suport to squid password file (crypt)
+	- Replace tmpnam calls to mkstemp
+	- Added support to --disable-squidpasswd
+	- Added support to --disable-smbpasswd
+	- Added function changesquidpass
+	- Added function showform
+	- Added function changesmbpass
+	- Deny some users like root,bin,daemon to change their passwords
+languages/Holland.h:
+	- added Holland Language (Thanks Joseph van Alphen)
+lang.h:
+	- added Holland Language
+
+0.3 2002-06-10
+--------------
+changepassword.c:
+	- added support to write directly to smbpasswd password file
+languages/Chinese.h:
+	- added Chinese Language (Thanks Liaobin)
+lang.h:
+	- added Chinese Language
+
+0.3 2002-06-07
+--------------
+smbencrypt/encrypt.c
+	- creation of program (adapted from smbencrypt main.c)
+smbencrypt/*
+	- added modules to encrypt plain text to samba password crypt
+	  from smbencrypt package by Gerald Carter <jerry@samba.org>
+changepassword.c:
+	- function clean_up redefined
+	- function exit_prg redefined
+	- htmlfooter function removed
+	- added cool interface
+configure:
+	- added --enable-logo option
+conf.h:
+	- added various options (colors, font face, font size etc)
+languages/Deutsch.h:
+	- added German Language (Thanks Emanuel Quass)
+lang.h:
+	- added German support
+
+0.2 2002-06-05
+--------------
+changepassword.c:
+	- set the real user ID of the calling process (samba password
+	  don't updated fixed - bug from 0.1)
+	- added charset support
+languages/Slovene.h:
+	- added Slovene Language (Thanks Rok Potocnik)
+lang.h:
+	- added charset support
+	- added Slovene support
+
+0.1 2002-06-04
+--------------
+first public release

@@ -1,0 +1,121 @@
+changepassword 0.9
+
+  ,,,,,,,,,,,,
+.: Descrição :.
+  ````````````
+O ChangePassword modifica as senhas do passwd, Samba e Squid através
+da Web. Todas as senhas são sincronizadas e alteradas em tempo real
+através de browsers como Mozilla, Netscape, IE, Opera e outros.
+
+  ,,,,,,,,,,,,,
+.: Instalação :.
+  `````````````
+1) Modifique o arquivo conf.h
+
+IMPORTANTE
+----------
+Se você recebeu mensagens como:
+
+"Impossível criar o arquivo temporário"
+"Impossível renomear o arquivo temporário"
+
+Não utilize os diretórios temporários sobre partições diferentes da partição
+raiz.
+
+2) Execute ./configure
+
+opções do configure:
+
+--enable-cgidir=cgidir		   Caminho completo para o diretório cgi-bin
+				   Padrão: /home/httpd/cgi-bin
+
+--enable-language=language	   Idioma
+				   Padrão: English
+				   Procure no diretório languages
+[
+--enable-smbpasswd=smbpasswd	   Caminho completo para o arquivo smbpasswd
+				   Padrão: /etc/smbpasswd
+
+--disable-smbpasswd		   Não utilizar as senhas do Samba
+]
+
+[
+--enable-squidpasswd=squidpasswd   Caminho completo para as senhas do Squid
+                                   Padrão: /etc/squid/passwd
+
+--disable-squidpasswd		   Não utilizar as senhas do Squid
+]
+
+--enable-logo=imagefilename        Logotipo a usar
+                                   Padrão: Nenhum
+
+Exemplos:
+
+./configure --enable-cgidir=/var/www/cgi-bin --enable-language=Portuguese
+--enable-smbpasswd=/usr/local/samba/private/smbpasswd
+--enable-squidpasswd=/etc/squid/passwd --enable-logo=opentech.jpg
+
+./configure --enable-cgidir=/var/www/cgi-bin --enable-language=Portuguese
+--disable-smbpasswd --enable-squidpasswd=/etc/squid/passwd
+--enable-logo=opentech.jpg
+
+
+3) digite "make"
+4) digite "make install"
+5) copie a imagem do logotipo (se configurado pela opção --enable-logo)
+   para o diretório de páginas do apache
+
+  ,,,,,,,,,,,,
+.: Traduções :.
+  ````````````
+1) Copie o arquivo English.h to Seu_idioma.h
+2) Traduza
+3) Envie-me o arquivo Seu_idioma.h
+
+  ,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+.: Créditos e Agradecimentos :.
+  ````````````````````````````
+
+Partes do programa foram retirados de:
+	Gerald Carter <jerry@samba.org>			smbencrypt package
+	Knut Grahlmann <Knut.Grahlmann@bigfoot.com>	frgpasswd.c
+	Pedro L. Orso <orso@onda.com.br>		chetcpasswd.c
+	Peter Orbaek <poe@daimi.aau.dk>			passwd.c
+	Salvatore Valente <svalente@mit.edu>		setpwnam.c
+
+Idiomas:
+	Anders Riis Espersen <aresp@agurk.dk>		Danish
+	Daniel Ruus <daniel@ruus.freeserve.co.uk>	Swedish
+	Emanuel Quass <emanuel.quass@temic.com>		German
+	Fernando Rodriguez <frodmda@hotmail.com>	Spanish
+	François Goudal <goudalf@free.fr>		Francais
+	Jan Slesinger <honza@beyondd.com>		Czech
+	Jaroslaw Danielski <jd@telvinet.pl>		Polish
+	Joseph van Alphen <joseph@vddonk.nl>		Holland
+	Liaobin <liao_bin@371.net>			Chinese
+	Massimiliano Adamo <maxadamo@iol.it>		Italian
+	Peter de Vries <peter@pdv.xs4all.nl>		Dutch
+	Rok Potocnik <rok@s-je.sik.si>			Slovenian
+
+Sugestões, correções e modificações:
+	Benjamin Lee <benjamin.lee@realthought.net>
+	Jeff Nelson <jtnelson@emirates.net.ae>
+	Scott Cottrell <scottrell@customresearch.com>
+	Victor Hugo dos Santos <victorhugops@wordcom.cl>
+
+  ,,,,,,,,,,,,,,,,,,,,,,,,,
+.: Modificações/Correções :.
+  `````````````````````````
+Procure pelas últimas alterações e correções no arquivo "ChangeLog".
+
+  ,,,,,,,,,
+.: Contato :.
+  `````````
+
+Você pode me encontrar em: <vinicius@opentech.inf.br>
+
+Você pode obter a última versão do changepassword em:
+	    http://changepassword.sourceforge.net
+
+Vinicius M. de Souza
+

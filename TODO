@@ -1,0 +1,5 @@
+changepassword TODO
+-------------------
+
+- Define Network Address allowed to access changepassword.cgi
+- Don't use single passwords
